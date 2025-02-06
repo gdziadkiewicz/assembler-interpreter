@@ -88,6 +88,7 @@ impl Const {
         Ok(Self(c))
     }
 }
+#[derive(Clone)]
 pub enum ConstOrRegister {
     R(RegisterName),
     C(Const),
@@ -119,6 +120,7 @@ impl Label {
         Ok(Self(name.to_string()))
     }
 }
+#[derive(Clone)]
 pub struct LiteralString(pub String);
 impl LiteralString {
     pub fn new(s: &str) -> Self {
@@ -126,11 +128,13 @@ impl LiteralString {
     }
 }
 
+#[derive(Clone)]
 pub enum LiterarlStringOrRegister {
     S(LiteralString),
     R(RegisterName),
 }
 
+#[derive(Clone)]
 pub enum Instruction {
     Mov(RegisterName, ConstOrRegister),
     Inc(RegisterName),
